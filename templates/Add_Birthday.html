@@ -1,0 +1,60 @@
+{%extends 'layouts.html'%}
+{% block head %}
+<!-- nav bar -->
+<nav class="navbar navbar-expand navbar-primary bg-primary">
+  <div class="container-fluid bg-light ">
+    <p class="navbar-brand fw-bolder fs-1 text-center mx-auto">Birthday Wisher</p>
+  </div>
+</nav>
+      <!-- controls for page navigations -->
+  <ul class="nav nav-pills pt-2">
+    <li class="nav-item">
+      <a class="nav-link " aria-current="page" href="/">Main Page</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="Add_Birthday">add new Birthday</a>
+    </li>
+    <li class="nav-item ms-auto">
+      <form class="form-inline my-2 my-lg-0">  
+        <a href="/logout" class="btn btn-success my-0 my-sm-0" type="submit">Logout</a>
+      </form>      
+    </li>
+    </ul>
+<!-- <link rel="stylesheet"  type="text/css" href="/static/style.css"> -->
+    {% endblock %}
+{% block body %}
+<!-- <div class="container-personal">
+<form  class="form-personal" action="/greet" method="POST">
+    <input class="form-items" type="text" name="name" autocomplete="off" autofocus placeholder="name">
+    <input class="form-items" type="email" name="email" autocomplete="off" autofocus placeholder="email">
+    <input class="form-items" type="date" name="birthday" autocomplete="off" autofocus placeholder="birthday">
+
+    <input class="form-items-personal" type="submit" value="greet">
+</form>
+</div> -->
+<div class="container">
+<form action="/greet" method="POST">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name">
+  </div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput2" class="form-label">Birthday</label>
+    <input type="date" name="birthday" class="form-control" id="exampleFormControlInput1" placeholder="Birthday">
+  </div>
+  <div class="col-auto">
+    <button type="submit"onclick="myFunction()" class="btn btn-primary mb-3">Add A Record</button>
+  </div>
+</form>
+</div>
+<script>
+    function myFunction() {
+     
+      alert('Record Added Sucessfully!');
+    }
+    </script>
+{%endblock%}

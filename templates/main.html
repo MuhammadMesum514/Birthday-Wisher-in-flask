@@ -1,0 +1,109 @@
+{% extends 'layouts.html' %}
+{% block head %}
+<!-- nav bar -->
+<nav class="navbar .navbar-expand navbar-primary bg-primary">
+    <div class="container-fluid bg-light ">
+      <p class="navbar-brand fw-bolder fs-1 text-center mx-auto">Birthday Wisher</p>
+    </div>
+    
+  </nav>
+      <!-- controls for page navigations -->
+  <ul class="nav nav-pills pt-2">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Main Page</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="Add_Birthday">add new Birthday</a>
+    </li>
+    <li class="nav-item ms-auto">
+      <form class="form-inline my-2 my-lg-0">  
+        <a href="/logout" class="btn btn-success my-0 my-sm-0" type="submit">Logout</a>
+      </form>      
+    </li>
+    </ul>
+{% endblock head %}
+
+{% block body %}
+<h1 class="display-3 mt-2 text-center">All Birthdays</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        
+        {% for record in records %}
+            
+        
+      
+      <!-- {% if  (now.month == record.dob.month) and (now.day == record.dob.day)  %}
+      <tr class="table-info">
+        <th scope="row">{{loop.index}}</th>
+        <td>{{record.name}}</td>
+        <td>{{record.email}}</td>
+        <td>{{record.dob.strftime('%d-%b-%Y')}}</td>
+        <td>  <a type="button"   class="btn btn-danger btn-sm mx-1 my-1">Wish</a>
+            <a type="button" href="/delete/{{record.id}}" class="btn btn-secondary btn-sm mx-1 my-1 ">Delete</a>
+            </td>
+      </tr>
+      {%endif%} -->
+          
+      {% if loop.index%2==0 %}
+        {% if  (now.month == record.dob.month) and (now.day == record.dob.day)  %}
+        <tr class="table">
+          <th scope="row">{{loop.index}}</th>
+          <td>{{record.name}}</td>
+          <td>{{record.email}}</td>
+          <td>{{record.dob.strftime('%d-%b-%Y')}}</td>
+          <td>  <a type="button"   class="btn btn-danger btn-sm mx-1 my-1">Wish</a>
+              <a type="button" href="/delete/{{record.id}}" class="btn btn-secondary btn-sm mx-1 my-1 ">Delete</a>
+              </td>
+        </tr>
+        {%else%}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{record.name}}</td>
+          <td>{{record.email}}</td>
+          <td>{{record.dob.strftime('%d-%b-%Y')}}</td>
+          <td>  <a type="button"  class="btn btn-primary disabled btn-sm mx-1 my-1">Wish</a>
+              <a type="button" href="/delete/{{record.id}}" class="btn btn-secondary btn-sm mx-1 my-1 ">Delete</a>
+              </td>
+        </tr>
+        {%endif%}    
+      {% endif %}   
+
+      {% if loop.index%2!=0 %}
+      {% if  (now.month == record.dob.month) and (now.day == record.dob.day)  %}
+      <tr class="table-info">
+        <th scope="row">{{loop.index}}</th>
+        <td>{{record.name}}</td>
+        <td>{{record.email}}</td>
+        <td>{{record.dob.strftime('%d-%b-%Y')}}</td>
+        <td>  <a type="button"   href="/wish/{{record.id}}" class="btn btn-danger btn-sm mx-1 my-1">Wish</a>
+            <a type="button" href="/delete/{{record.id}}" class="btn btn-secondary btn-sm mx-1 my-1 ">Delete</a>
+            </td>
+      </tr>
+      {%else%}
+      <tr class="table-primary">
+        <th scope="row">{{loop.index}}</th>
+        <td>{{record.name}}</td>
+        <td>{{record.email}}</td>
+        <td>{{record.dob.strftime('%d-%b-%Y')}}</td>
+        <td>  <a type="button" href="/wish/{{record.email}}" class="btn btn-primary disabled btn-sm mx-1 my-1">Wish</a>
+            <a type="button" href="/delete/{{record.id}}" class="btn btn-secondary btn-sm mx-1 my-1 ">Delete</a>
+            </td>
+      </tr>
+      {%endif%}    
+    {% endif %}   
+
+      {% endfor %}
+      </tbody>
+    </table>
+    
+{% endblock body %}

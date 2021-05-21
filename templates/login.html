@@ -1,0 +1,42 @@
+{% extends 'layouts.html' %}
+{% block head %}
+ <!-- nav bar -->
+<nav class="navbar navbar-primary bg-primary">
+    <div class="container-fluid bg-light ">
+      <p class="navbar-brand fw-bolder fs-1 text-center mx-auto">Birthday Wisher</p>
+    </div>
+  </nav>
+{% endblock head %}
+{% block body %}
+
+<div class="container">
+    <form action="/login" method="POST" class="row g-3 needs-validation" novalidate>
+    
+        <div class="col-md-4">
+          <label for="validationCustomUsername" class="form-label">Username</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input type="text" name="username" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustomUsername" class="form-label">Password</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">&#8226;</span>
+            <input type="password" name="password" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Please choose a Passoword.
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
+    
+{% endblock body %}
